@@ -260,6 +260,20 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="DDLatitude1" destination="7Cy-FV-1ct" id="7yu-pr-znR"/>
+                        <outlet property="DDLongitude1" destination="bA2-Ml-dFM" id="dl2-hq-T9k"/>
+                        <outlet property="DMMLatitude1" destination="1Tk-KO-sbt" id="Rej-Lc-nkp"/>
+                        <outlet property="DMMLatitude2" destination="dqe-4Z-cGh" id="pSl-9L-Ba9"/>
+                        <outlet property="DMMLongitude1" destination="J5B-pH-l4w" id="xXL-OR-gMf"/>
+                        <outlet property="DMMLongitude2" destination="r32-ag-1cY" id="UWR-W3-NJB"/>
+                        <outlet property="DMSLatitude1" destination="CTJ-Vv-In5" id="cNe-IE-u9b"/>
+                        <outlet property="DMSLatitude2" destination="76Z-Iy-VfI" id="Zfc-XD-Y6W"/>
+                        <outlet property="DMSLatitude3" destination="qXF-3L-aX3" id="Nlo-BO-AXD"/>
+                        <outlet property="DMSLongitude1" destination="9pE-nq-sBv" id="iU3-pc-gtR"/>
+                        <outlet property="DMSLongitude2" destination="mhc-ss-ym3" id="K6u-pi-QLp"/>
+                        <outlet property="DMSLongitude3" destination="UVm-OR-Kbi" id="XOj-Ah-iAm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
