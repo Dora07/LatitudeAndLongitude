@@ -44,20 +44,20 @@ class ViewController: UIViewController
         DMSLongitude1.text = "\(DDLon1)"
         
         //經緯分
-        let DMMLat1 = ((DDLatitudeText ?? 0.0) - Double(DDLat1) * 60)
-        let DMMLat1Int = Int(DMMLat1)
-        let DMMLon1 = ((DDLongitudeText ?? 0.0) - Double(DDLon1) * 60)
-        let DMMLon1Int = Int(DMMLon1)
+        let DMMLat2 = ((DDLatitudeText ?? 0.0) - Double(DDLat1)) * 60
+        let DMMLat2Int = Int(DMMLat2)
+        let DMMLon2 = ((DDLongitudeText ?? 0.0) - Double(DDLon1)) * 60
+        let DMMLon2Int = Int(DMMLon2)
         
         //%.4f取小數點四位
-        DMMLatitude2.text = String(format: "%.4f", DMMLat1)
-        DMSLatitude2.text = "\(DMMLat1Int)"
-        DMMLongitude2.text = String(format: "%.4f", DMMLon1)
-        DMSLongitude2.text = "\(DMMLon1Int)"
+        DMMLatitude2.text = String(format: "%.4f", DMMLat2)
+        DMSLatitude2.text = "\(DMMLat2Int)"
+        DMMLongitude2.text = String(format: "%.4f", DMMLon2)
+        DMSLongitude2.text = "\(DMMLon2Int)"
         
         //經緯秒
-        let DMSLat1 = (DMMLat1 - Double(DMMLat1Int)) * 60
-        let DMSLon1 = (DMMLon1 - Double(DMMLon1Int)) * 60
+        let DMSLat1 = (DMMLat2 - Double(DMMLat2Int)) * 60
+        let DMSLon1 = (DMMLon2 - Double(DMMLon2Int)) * 60
         //%.2f取小數點二位
         DMSLatitude3.text = String(format: "%.2f", DMSLat1)
         DMSLongitude3.text = String(format: "%.2f", DMSLon1)
@@ -67,7 +67,12 @@ class ViewController: UIViewController
     
     //DMM轉換按鈕
     @IBAction func ConvertDMM(_ sender: UIButton)
-    {    //當使用者沒輸入完點轉換就帶入預設值
+    {
+        
+        //收鍵盤
+            view.endEditing(true)
+        
+        //當使用者沒輸入完點轉換就帶入預設值
         //空字串
         let DMMLatitude1Text =  Double(String(DMMLatitude1.text ?? ""))
         let DMMLatitude2Text =
@@ -102,6 +107,11 @@ class ViewController: UIViewController
     
     @IBAction func ConvertDMS(_ sender: UIButton)
     {
+        
+        
+        //收鍵盤
+            view.endEditing(true)
+        
         //DMS經緯度轉DMM經緯度
         DMSLatitude1.text = DMMLatitude1.text
         DMSLongitude1.text = DMMLongitude1.text
@@ -137,9 +147,17 @@ class ViewController: UIViewController
         DDLatitude1.text = ""
         DDLongitude1.text = ""
         //DMM
-        
-        
-        
+        DMMLatitude1.text = ""
+        DMMLatitude2.text = ""
+        DMMLongitude1.text = ""
+        DMMLongitude2.text = ""
+        //DMS
+        DMSLatitude1.text = ""
+        DMSLatitude2.text = ""
+        DMSLatitude3.text = ""
+        DMSLongitude1.text = ""
+        DMSLongitude2.text = ""
+        DMSLongitude3.text = ""
         
         
         
