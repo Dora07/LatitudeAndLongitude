@@ -29,24 +29,24 @@ class ViewController: UIViewController
     {   //收鍵盤
         view.endEditing(true)
         
-        //緯度
+        //經緯度
         //當使用者沒輸入完點轉換就帶入預設值
         //空字串
-        let DDLatitudetext = Double(String(DDLatitude1.text ?? ""))
-        let DDLongitudetext = Double(String(DDLongitude1.text ?? ""))
+        let DDLatitudeText = Double(String(DDLatitude1.text ?? ""))
+        let DDLongitudeText = Double(String(DDLongitude1.text ?? ""))
         //0.0
-        let DDLat1 = Int(DDLatitudetext ?? 0.0)
-        let DDLon1 = Int(DDLongitudetext ?? 0.0)
+        let DDLat1 = Int(DDLatitudeText ?? 0.0)
+        let DDLon1 = Int(DDLongitudeText ?? 0.0)
         
         DMMLatitude1.text = "\(DDLat1)"
         DMSLatitude1.text = "\(DDLat1)"
         DMMLongitude1.text = "\(DDLon1)"
         DMSLongitude1.text = "\(DDLon1)"
         
-        //緯分
-        let DMMLat1 = ((DDLatitudetext ?? 0.0) - Double(DDLat1) * 60)
+        //經緯分
+        let DMMLat1 = ((DDLatitudeText ?? 0.0) - Double(DDLat1) * 60)
         let DMMLat1Int = Int(DMMLat1)
-        let DMMLon1 = ((DDLongitudetext ?? 0.0) - Double(DDLon1) * 60)
+        let DMMLon1 = ((DDLongitudeText ?? 0.0) - Double(DDLon1) * 60)
         let DMMLon1Int = Int(DMMLon1)
         
         //%.4f取小數點四位
@@ -55,7 +55,7 @@ class ViewController: UIViewController
         DMMLongitude2.text = String(format: "%.4f", DMMLon1)
         DMSLongitude2.text = "\(DMMLon1Int)"
         
-        //緯秒
+        //經緯秒
         let DMSLat1 = (DMMLat1 - Double(DMMLat1Int)) * 60
         let DMSLon1 = (DMMLon1 - Double(DMMLon1Int)) * 60
         //%.2f取小數點二位
@@ -67,12 +67,85 @@ class ViewController: UIViewController
     
     //DMM轉換按鈕
     @IBAction func ConvertDMM(_ sender: UIButton)
-    {
+    {    //當使用者沒輸入完點轉換就帶入預設值
+        //空字串
+        let DMMLatitude1Text =  Double(String(DMMLatitude1.text ?? ""))
+        let DMMLatitude2Text =
+            Double((String(DMMLatitude2.text ?? "")))
+        let DMMLongitude1Text = Double(String(DMMLongitude1.text ?? ""))
+        let DMMLongitude2Text = Double(String(DMMLongitude2.text ?? ""))
         
+        //0.0轉換經緯度
+        let DDLat1 = (DMMLatitude1Text ?? 0.0) + (DMMLatitude2Text ?? 0.0) / 60
+        let DDLon1 = (DMMLongitude1Text ?? 0.0) + (DMMLongitude2Text ?? 0.0) / 60
+        
+        DDLatitude1.text = String(format: "%.6f", DDLat1)
+        DMSLatitude1.text = DMMLatitude1.text
+        DDLongitude1.text = String(format: "%.6f", DDLon1 )
+        DMSLongitude1.text = DMMLongitude1.text
+        
+        //經緯分
+        let DMLatInt = Int(DMMLatitude2Text ?? 0.0)
+        let DMLonInt = Int(DMMLongitude2Text ?? 0.0)
+        DMSLatitude2.text = "\(DMLatInt)"
+        DMSLongitude2.text = "\(DMLonInt)"
+        
+        //經緯秒
+        let DMSLat1 = ((DMMLatitude2Text ?? 0.0) - Double(DMLatInt)) * 60
+        let DMSLon1 = ((DMMLongitude2Text ?? 0.0) - Double(DMLonInt)) * 60
+        DMSLatitude3.text = String(format: "%.2f", DMSLat1)
+        DMSLongitude3.text = String(format: "%.2f", DMSLon1)
         
     }
     
     
+    
+    @IBAction func ConvertDMS(_ sender: UIButton)
+    {
+        //DMS經緯度轉DMM經緯度
+        DMSLatitude1.text = DMMLatitude1.text
+        DMSLongitude1.text = DMMLongitude1.text
+        
+        //DMS經緯分＋經緯秒轉DMS經緯分
+        let DMSLat2 = Double(String(DMSLatitude2.text ?? ""))
+        let DMSLat3 = Double(String(DMSLatitude3.text ?? ""))
+        let DMMLat2 = (DMSLat2 ?? 0.0) + (DMSLat3 ?? 0.0) / 60
+    
+        let DMSLon2 = Double(String(DMSLongitude2.text ?? ""))
+        let DMSLon3 = Double(String(DMSLongitude3.text ?? ""))
+        let DMMLon2 = (DMSLon2 ?? 0.0 ) + (DMSLon3 ?? 0.0) / 60
+        DMMLatitude2.text = String(format: "%.4f", DMMLat2)
+        DMMLongitude2.text = String(format: "%.4f", DMMLon2)
+        
+        //DMM經緯度+經緯分轉DD經緯度
+        
+        let DMMLat1 = Double(String(DMMLatitude1.text ?? ""))
+        let DMMLon1 = Double(String(DMMLongitude1.text ?? ""))
+        let DDLat1 =  (DMMLat2 ?? 0.0) + (DMMLat1 ?? 0.0 ) / 60
+        let DDLon1 = (DMMLon2 ?? 0.0) +
+            (DMMLon1 ?? 0.0 ) / 60
+        DDLatitude1.text = String(format: "%.6f", DDLat1)
+        DDLongitude1.text = String(format: "%.6f", DDLon1)
+        
+    }
+    
+    //清除所有內容按鈕
+    
+    
+    @IBAction func ClearAll(_ sender: UIButton)
+    {   //DD
+        DDLatitude1.text = ""
+        DDLongitude1.text = ""
+        //DMM
+        
+        
+        
+        
+        
+        
+        
+        
+    }
     
     
     

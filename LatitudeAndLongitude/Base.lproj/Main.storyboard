@@ -245,6 +245,9 @@
                                 <state key="normal" title="轉換">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="ConvertDMS:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FpR-69-66Y"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n8b-7v-vkG">
                                 <rect key="frame" x="188" y="483" width="123" height="43"/>
@@ -253,6 +256,9 @@
                                 <state key="normal" title="清除所有內容">
                                     <color key="titleColor" systemColor="tertiarySystemBackgroundColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="ClearAll:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aVp-fJ-EFh"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bcw-Y5-J0q">
                                 <rect key="frame" x="300" y="538" width="61" height="43"/>
