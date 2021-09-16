@@ -184,7 +184,11 @@ class ViewController: UIViewController
     
     
     @IBAction func ClearAll(_ sender: UIButton)
-    {   //DD
+    {
+        //收鍵盤
+            view.endEditing(true)
+        
+        //DD
         DDLatitude1.text = ""
         DDLongitude1.text = ""
         //DMM
