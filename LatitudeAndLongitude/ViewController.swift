@@ -159,12 +159,14 @@ class ViewController: UIViewController
     
     //新增地標
     @IBAction func LocationAdd(_ sender: UIButton)
-    {
+    {   //收鍵盤
+        view.endEditing(true)
+        
+        //經緯度
         let Latitude = Double(String(DDLatitude1.text ?? ""))
         let Longitude = Double(String(DDLongitude1.text ?? ""))
-        
+        //地標
         let Point = MKPointAnnotation()
-    
         Point.title = PlaceTextField.text
         Point.coordinate = CLLocationCoordinate2D(latitude: (Latitude ?? 0.0), longitude: (Longitude ?? 0.0 ))
         
