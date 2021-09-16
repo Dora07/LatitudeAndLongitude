@@ -1,5 +1,6 @@
 
 import UIKit
+import MapKit
 
 class ViewController: UIViewController
 {
@@ -18,6 +19,11 @@ class ViewController: UIViewController
     @IBOutlet weak var DMSLongitude1: UITextField!
     @IBOutlet weak var DMSLongitude2: UITextField!
     @IBOutlet weak var DMSLongitude3: UITextField!
+    //Apple map
+    @IBOutlet weak var MapView: MKMapView!
+    //地標Textfield
+    @IBOutlet weak var PlaceTextField: UITextField!
+    
     
     override func viewDidLoad()
     {
@@ -30,7 +36,7 @@ class ViewController: UIViewController
         view.endEditing(true)
         
         //經緯度
-        //當使用者沒輸入完點轉換就帶入預設值
+        //當使用者沒輸入完點轉換就帶入預設值空字串或0.0
         //空字串
         let DDLatitudeText = Double(String(DDLatitude1.text ?? ""))
         let DDLongitudeText = Double(String(DDLongitude1.text ?? ""))
@@ -61,6 +67,10 @@ class ViewController: UIViewController
         //%.2f取小數點二位
         DMSLatitude3.text = String(format: "%.2f", DMSLat1)
         DMSLongitude3.text = String(format: "%.2f", DMSLon1)
+        
+        //設定地圖遵照經緯度DD,如果沒有就設定為台灣
+        MapView.region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: (DDLatitudeText ?? 23.973875), longitude: (DDLongitudeText ?? 120.982025)),latitudinalMeters: 1000,longitudinalMeters: 1000 )
+        
         
     }
     
@@ -101,6 +111,9 @@ class ViewController: UIViewController
         DMSLatitude3.text = String(format: "%.2f", DMSLat1)
         DMSLongitude3.text = String(format: "%.2f", DMSLon1)
         
+        //設定地圖遵照經緯度DD
+        MapView.region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: DDLat1 , longitude: DDLon1 ), latitudinalMeters: 1000, longitudinalMeters: 1000)
+        
     }
     
     
@@ -137,7 +150,33 @@ class ViewController: UIViewController
         DDLatitude1.text = String(format: "%.6f", DDLat1)
         DDLongitude1.text = String(format: "%.6f", DDLon1)
         
+        //設定地圖遵照經緯度DD
+        MapView.region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: DDLat1 , longitude: DDLon1), latitudinalMeters: 1000, longitudinalMeters: 1000)
+        
+        
+        
     }
+    
+    //新增地標
+    @IBAction func LocationAdd(_ sender: UIButton)
+    {
+        let Latitude = Double(String(DDLatitude1.text ?? ""))
+        let Longitude = Double(String(DDLongitude1.text ?? ""))
+        
+        let Point = MKPointAnnotation()
+    
+        Point.title = PlaceTextField.text
+        Point.coordinate = CLLocationCoordinate2D(latitude: (Latitude ?? 0.0), longitude: (Longitude ?? 0.0 ))
+        
+        MapView.addAnnotation(Point)
+        
+        
+        
+    }
+    
+    
+    
+    
     
     //清除所有內容按鈕
     
@@ -159,7 +198,8 @@ class ViewController: UIViewController
         DMSLongitude2.text = ""
         DMSLongitude3.text = ""
         
-        
+        //設定回到台灣
+        MapView.region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 23.973875, longitude: 120.982025), latitudinalMeters: 1000, longitudinalMeters: 1000)
         
         
         

@@ -267,6 +267,9 @@
                                 <state key="normal" title="標記">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="LocationAdd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GCn-ne-itE"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -285,6 +288,8 @@
                         <outlet property="DMSLongitude1" destination="9pE-nq-sBv" id="iU3-pc-gtR"/>
                         <outlet property="DMSLongitude2" destination="mhc-ss-ym3" id="K6u-pi-QLp"/>
                         <outlet property="DMSLongitude3" destination="UVm-OR-Kbi" id="XOj-Ah-iAm"/>
+                        <outlet property="MapView" destination="wTR-d7-1E0" id="G0B-MR-Uwn"/>
+                        <outlet property="PlaceTextField" destination="3L9-7B-VjM" id="eqB-M3-Tv3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
